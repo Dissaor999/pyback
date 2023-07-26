@@ -1,0 +1,58 @@
+Migrations
+- php artisan migrate
+- php artisan migrate:refresh   (eliminará todas las tablas y luego ejecutará el migrate)
+- php artisan migrate:reset     (revertirá todas las migraciones)
+- php artisan migrate:status    (migraciones se han ejecutado hasta el momento)
+- php artisan db:wipe           (borrar tablas)
+
+Seeder
+- php artisan make:seeder UserSeeder    (creacion de semillas)
+- php artisan db:seed                   (ejecuta semillas)
+
+Models
+- php artisan make:model  SaleOrder -m -c -r     (crea el modelo, migracion, controllador con recuersos)
+- php artisan
+
+Passport
+- php artisan passport:client --personal
+
+Controller
+- php artisan make:controller sale/OrderController --api    (controlador de recursos API)
+- php artisan make:controller ClassController -r    (crea controlador con recursos web)
+- php artisan make:controller ClassController --model=Model -r   (crea controlador y recursos basado en el modelo)
+
+
+Comando magico
+- php artisan db:wipe && php artisan migrate && php artisan db:seed && php artisan passport:client --personal
+- php artisan cron:get-items-zoho
+- php artisan cron:get-orders-shopify
+
+Rutas
+- php artisan route:list
+- php artisan route:cache  (para optimizar memoria)
+- php artisan route:clear  (cada que agregas nueva rutas)
+
+Cache
+- php artisan cache:clear
+- php artisan optimize
+
+CRON
+- php artisan make:command GetOrdersShopify --command=cron:get-orders-shopify
+- php artisan (para verlo)
+
+
+SSH COMANDOS
+
+-> Certificados <-
+- sudo apt get update
+- sudo certbot --apache -d hermesmx.ml -d www.hermesmx.ml -d back.hermesmx.ml -d www.back.hermesmx.ml
+- sudo systemctl status certbot.timer
+
+sudo cp /etc/apache2/sites-available/back.hermesmx.ml.conf /etc/apache2/sites-available/hermesmx.ml.conf
+sudo cp /etc/apache2/sites-available/back.hermesmx.ml-ssl.conf   /etc/apache2/sites-available/hermesmx.ml-ssl.conf
+
+ServerName hermesmx.ml
+ServerAlias www.hermesmx.ml
+
+curl -sS https://getcomposer.org/installer | php
+sudo mv composer.phar /usr/local/bin/composer
